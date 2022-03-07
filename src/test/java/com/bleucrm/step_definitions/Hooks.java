@@ -1,10 +1,11 @@
 package com.bleucrm.step_definitions;
 
+import com.bleucrm.utilities.BrowserUtils;
 import com.bleucrm.utilities.ConfigurationReader;
 import com.bleucrm.utilities.Driver;
 import io.cucumber.java.Scenario;
-import org.junit.After;
-import org.junit.Before;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
@@ -18,6 +19,7 @@ public class Hooks {
         Driver.get().get(ConfigurationReader.get("url"));
         Driver.get().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         Driver.get().manage().window().maximize();
+        BrowserUtils.waitFor(5.0);
     }
     @After
     public void tearDown(Scenario scenario){
