@@ -19,7 +19,6 @@ public class Hooks {
         Driver.get().get(ConfigurationReader.get("url"));
         Driver.get().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         Driver.get().manage().window().maximize();
-        BrowserUtils.waitFor(5.0);
     }
     @After
     public void tearDown(Scenario scenario){
