@@ -1,4 +1,4 @@
-@wip
+
 Feature: Filter and search functionality
 
 	Background:
