@@ -27,7 +27,7 @@ Feature:  Create a poll by clicking on Poll tab under Active Stream
     When user clicks on add mention icon and clicks on Employees and Departments
     Then user can select 2 employee emails randomly to mention
 
-@wip
+
   Scenario Outline: User adds <n> questions with <clickAmount> more multiple answers
     When user clicks on "Add question" text to add question <n> times
     Then text boxes for n+1 questions and their answer boxes are displayed

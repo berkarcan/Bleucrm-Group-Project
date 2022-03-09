@@ -34,7 +34,7 @@ public class PollPage extends BasePage {
     @FindBy(css="a[id^='destDepartmentTab_mention']")
     public WebElement EmployeesDepartmentsTabMention;
 
-    @FindBy(css="[id^=question]")
+    @FindBy(xpath="//*[@class='vote-block-title adda']")
     public List<WebElement> questions;
     @FindBy(id="question_0")
     public  WebElement firstQuestion;

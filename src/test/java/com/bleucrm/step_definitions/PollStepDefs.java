@@ -1,5 +1,4 @@
 package com.bleucrm.step_definitions;
-
 import com.bleucrm.pages.DashBoardPage;
 import com.bleucrm.pages.PollPage;
 import com.bleucrm.utilities.BrowserUtils;
@@ -9,6 +8,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import java.util.ArrayList;
@@ -17,7 +17,6 @@ import java.util.Random;
 
 public class PollStepDefs {
     PollPage pollPage = new PollPage();
-
 
     @When("user clicks on poll tab")
     public void userClicksOnPollTab() {
@@ -54,7 +53,7 @@ public class PollStepDefs {
         for (int i = 0; i < dep_num; i++) {
             int RandomIndex = new Random().nextInt(dep_list.size());
             dep_list.get(RandomIndex).click();
-            BrowserUtils.waitForClickablility(pollPage.department_check.get(RandomIndex), 5);
+            BrowserUtils.waitForClickablility(pollPage.department_check.get(RandomIndex), 15);
             pollPage.department_check.get(RandomIndex).click();
         }
         for (int i = 0; i < employee_num; i++) {
@@ -103,9 +102,8 @@ public class PollStepDefs {
     }
 
     int expectedNumOfQuestions;
-
     @When("user clicks on {string} text to add question {int} times")
-    public int userClicksOnTextToAddQuestionTimeS(String addq, int nClick) {
+    public void userClicksOnTextToAddQuestionTimeS(String addq, int nClick) {
 
         expectedNumOfQuestions = pollPage.questions.size()+nClick; //on the page, existing former poll questions+number of clicks
         System.out.println("nClick = " + nClick);
@@ -113,7 +111,7 @@ public class PollStepDefs {
         for (int i = 0; i < nClick; i++) {
             Driver.get().findElement(By.linkText(addq)).click();
         }
-        return expectedNumOfQuestions;
+
     }
 
 
@@ -170,17 +168,16 @@ public class PollStepDefs {
 
     @When("user allows multiple choices, insert questions and answers")
     public void userAllowsMultipleChoicesInsertQuestionsAndAnswers() {
-
-        for (WebElement checkbox :pollPage.allowMultipleCheckboxes ) {
-            new Actions(Driver.get()).moveToElement(checkbox);
-            BrowserUtils.waitForClickablility(checkbox,10);
-            checkbox.click();
-        }
-        int n=1;
+        int n=0;
         for (WebElement question : pollPage.questions) {
-            new Actions(Driver.get()).moveToElement(question);
-            BrowserUtils.waitForClickablility(question,10);
+//            JavascriptExecutor executor = (JavascriptExecutor) Driver.get();
+//            executor.executeScript("arguments[0].scrollIntoView(true);", question);
+            BrowserUtils.waitForVisibility(question,10);
             question.sendKeys("question "+n+" ?");
+            //click checkbox
+            new Actions(Driver.get()).moveToElement(pollPage.allowMultipleCheckboxes.get(n));
+            BrowserUtils.waitForClickablility(pollPage.allowMultipleCheckboxes.get(n),10);
+            pollPage.allowMultipleCheckboxes.get(n).click();
             n++;
         }
 
