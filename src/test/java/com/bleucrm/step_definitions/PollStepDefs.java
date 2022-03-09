@@ -104,24 +104,25 @@ public class PollStepDefs {
         pollPage.employees.get(RandomIndex).click();
     }
 
-    int expectedNunOfQuestions;
+    int expectedNumOfQuestions;
 
     @When("user clicks on {string} text to add question {int} times")
     public int userClicksOnTextToAddQuestionTimeS(String addq, int nClick) {
 
-        expectedNunOfQuestions = pollPage.questions.size()+nClick;
-
+        expectedNumOfQuestions = pollPage.questions.size()+nClick; //on the page, existing former poll questions+number of clicks
+        System.out.println("nClick = " + nClick);
+        System.out.println("expectedNumOfQuestions = " + expectedNumOfQuestions);
         for (int i = 0; i < nClick; i++) {
             Driver.get().findElement(By.linkText(addq)).click();
         }
-        return expectedNunOfQuestions;
+        return expectedNumOfQuestions;
     }
 
 
     @Then("text boxes for n+1 questions and their answer boxes are displayed")
     public void text_boxes_for_n_1_questions_and_their_answer_boxes_are_displayed() {
         int actualNumOfQuestions = pollPage.questions.size();
-        Assert.assertEquals(expectedNunOfQuestions, actualNumOfQuestions);
+        Assert.assertEquals(expectedNumOfQuestions, actualNumOfQuestions);
     }
 
     int expectedNumofAnswers;
@@ -136,7 +137,7 @@ public class PollStepDefs {
             Driver.get().findElement(By.id("answer_" + (Qnumber - 1) + "__" + lastAnswerNo + "_")).click();
 
         }
-        expectedNumofAnswers = lastAnswerNo + 2; //last answer increases by 1 and size is already+1 wrt no
+        expectedNumofAnswers = lastAnswerNo + 2; //last answer increases by 1 and size is already+1 wrt number
         return expectedNumofAnswers;
     }
 
@@ -172,10 +173,12 @@ public class PollStepDefs {
     public void userAllowsMultipleChoicesInsertQuestionsAndAnswers() {
 
         for (WebElement checkbox :pollPage.allowMultipleCheckboxes ) {
+            new Actions(Driver.get()).moveToElement(checkbox);
             checkbox.click();
         }
         int n=1;
         for (WebElement question : pollPage.questions) {
+            new Actions(Driver.get()).moveToElement(question);
             question.sendKeys("question "+n+" ?");
             n++;
         }
@@ -183,6 +186,7 @@ public class PollStepDefs {
         List<WebElement> answers=Driver.get().findElements(By.cssSelector("[id^=answer_]"));
         int t=1;
         for (WebElement answer : answers) {
+            new Actions(Driver.get()).moveToElement(answer);
             answer.sendKeys("Good answer "+t);
             t++;
         }
