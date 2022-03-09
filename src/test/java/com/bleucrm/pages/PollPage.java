@@ -36,6 +36,8 @@ public class PollPage extends BasePage {
 
     @FindBy(css="[id^=question]")
     public List<WebElement> questions;
+    @FindBy(id="question_0")
+    public  WebElement firstQuestion;
     @FindBy(xpath= "//*[@class='vote-block-close delq']")
     public List<WebElement>deleteQIcons;
 

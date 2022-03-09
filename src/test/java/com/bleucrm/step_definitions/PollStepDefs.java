@@ -11,9 +11,6 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -25,6 +22,7 @@ public class PollStepDefs {
     @When("user clicks on poll tab")
     public void userClicksOnPollTab() {
         new DashBoardPage().poll_tab.click();
+        BrowserUtils.waitForVisibility(pollPage.firstQuestion,5);
     }
 
     @When("user click on destination input box and clicks Employees and Departments")
@@ -150,7 +148,8 @@ public class PollStepDefs {
 
     @Then("user can delete the following questions with the numbers")
     public void user_can_delete_the_following_questions_with_the_numbers(List<Integer> Qnums) {
-        List<WebElement> deleteQIcons = Driver.get().findElements(By.xpath("//*[@class='vote-block-close delq']"));
+        //List<WebElement> deleteQIcons = Driver.get().findElements(By.xpath("//*[@class='vote-block-close delq']"));
+        List<WebElement> deleteQIcons =pollPage.deleteQIcons;
         for (Integer qnum : Qnums) {
             Driver.get().findElement(By.id("question_" + (qnum - 1))).click();
             deleteQIcons.get(qnum - 1).click();
@@ -174,11 +173,13 @@ public class PollStepDefs {
 
         for (WebElement checkbox :pollPage.allowMultipleCheckboxes ) {
             new Actions(Driver.get()).moveToElement(checkbox);
+            BrowserUtils.waitForClickablility(checkbox,10);
             checkbox.click();
         }
         int n=1;
         for (WebElement question : pollPage.questions) {
             new Actions(Driver.get()).moveToElement(question);
+            BrowserUtils.waitForClickablility(question,10);
             question.sendKeys("question "+n+" ?");
             n++;
         }
@@ -187,6 +188,7 @@ public class PollStepDefs {
         int t=1;
         for (WebElement answer : answers) {
             new Actions(Driver.get()).moveToElement(answer);
+            BrowserUtils.waitForClickablility(answer,10);
             answer.sendKeys("Good answer "+t);
             t++;
         }
