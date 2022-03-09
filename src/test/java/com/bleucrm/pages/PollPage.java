@@ -29,6 +29,22 @@ public class PollPage extends BasePage {
     @FindBy(css="input#undefined")
     public WebElement saveButton;
 
+    @FindBy(id="bx-b-mention-blogPostForm")
+    public WebElement addMentionIcon;
+    @FindBy(css="a[id^='destDepartmentTab_mention']")
+    public WebElement EmployeesDepartmentsTabMention;
+
+    @FindBy(css="[id^=question]")
+    public List<WebElement> questions;
+    @FindBy(xpath= "//*[@class='vote-block-close delq']")
+    public List<WebElement>deleteQIcons;
+
+    @FindBy(css="[id^=multi]")
+    public List<WebElement> allowMultipleCheckboxes;
+
+    @FindBy(id="blog-submit-button-save")
+    public WebElement sendButton;
+
 
 
 
