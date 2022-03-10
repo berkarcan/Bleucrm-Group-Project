@@ -21,7 +21,7 @@ public class PollStepDefs {
     @When("user clicks on poll tab")
     public void userClicksOnPollTab() {
         new DashBoardPage().poll_tab.click();
-        BrowserUtils.waitForVisibility(pollPage.firstQuestion,5);
+        BrowserUtils.waitForVisibility(pollPage.firstQuestion,10);
     }
 
     @When("user click on destination input box and clicks Employees and Departments")
@@ -38,7 +38,8 @@ public class PollStepDefs {
 
     }
 
-
+    int RandomIndex;
+    List<Integer> randil=new ArrayList<>();
     @And("user can click to add {int} departments and {int} employees randomly")
     public void userCanClickToAddDepartmentsAndEmployeesRandomly(int dep_num, int employee_num) {
         List<WebElement> dep_list = new ArrayList<>();
@@ -51,14 +52,18 @@ public class PollStepDefs {
         System.out.println(BrowserUtils.getElementsText(dep_list));
 
         for (int i = 0; i < dep_num; i++) {
-            int RandomIndex = new Random().nextInt(dep_list.size());
+            RandomIndex = new Random().nextInt(dep_list.size());
+            while (randil.contains(RandomIndex )){
+                RandomIndex = new Random().nextInt(dep_list.size());
+            }
+            randil.add(RandomIndex);
             new Actions(Driver.get()).moveToElement( dep_list.get(RandomIndex));
             dep_list.get(RandomIndex).click();
             BrowserUtils.waitFor(1.0);
             pollPage.department_check.get(RandomIndex).click();
         }
         for (int i = 0; i < employee_num; i++) {
-            int RandomIndex = new Random().nextInt(pollPage.employees.size());
+            RandomIndex = new Random().nextInt(pollPage.employees.size());
             new Actions(Driver.get()).moveToElement(pollPage.employees.get(RandomIndex));
             pollPage.employees.get(RandomIndex).click();
         }
