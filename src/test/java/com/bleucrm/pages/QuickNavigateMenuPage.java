@@ -1,9 +1,12 @@
 package com.bleucrm.pages;
 
+import org.junit.Assert;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class QuickNavigateMenuPage extends BasePage{
+
 
     @FindBy(id = "feed-add-post-form-tab-tasks")
     public WebElement taskBtn;
@@ -38,7 +41,15 @@ public class QuickNavigateMenuPage extends BasePage{
     @FindBy(css = "#blog-submit-button-save")
     public WebElement sendBtn;
 
-    @FindBy(linkText = "High Priority")
+    @FindBy(xpath = "//*[@id='bx-component-scope-lifefeed_task_form']/div/div[1]/div[1]/div[1]/label")
     public WebElement highPriorityText;
 
-}
+    @FindBy(css = ".task-checklist-title")
+    public WebElement checkListText;
+
+
+    }
+
+
+
+

@@ -5,4 +5,3 @@ Feature:  Create a poll by clicking on Poll tab under Active Stream
     Then the user should be able to reach the dashboard page: "https://qa.bleucrm.com/stream/?login=yes"
 
 
-  Scenario:
