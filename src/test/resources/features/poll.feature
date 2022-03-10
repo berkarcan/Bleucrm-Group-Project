@@ -22,10 +22,10 @@ Feature:  Create a poll by clicking on Poll tab under Active Stream
     When user clicks on add mention icon and clicks on Employees and Departments
     Then user can select an employee email randomly to mention
 
-
+  @w
   Scenario: User adds multiple mentions by clicking on the add mention icon
     When user clicks on add mention icon and clicks on Employees and Departments
-    Then user can select 2 employee emails randomly to mention
+    Then user can select 3 employee emails randomly to mention
 
 
   Scenario Outline: User adds <n> questions with <clickAmount> more multiple answers
@@ -51,14 +51,14 @@ Feature:  Create a poll by clicking on Poll tab under Active Stream
       | 1 |
    ##1 denotes first question, 3 denotes third
 
-  @wip
+  @smoke
   Scenario: User sends a poll  with multiple choices using the general functionalities in the preceding scenarios
     When user clicks "Add more" and clicks Employees and Departments
     Then user can click to add 2 departments and 4 employees randomly
     When user clicks on link icon
     Then user can save text "" or link "www.pollyjoly.com"
     When user clicks on add mention icon and clicks on Employees and Departments
-    Then user can select an employee email randomly to mention
+    Then user can select 4 employee emails randomly to mention
     When user clicks on "Add question" text to add question 3 times
     Then text boxes for n+1 questions and their answer boxes are displayed
     When user allows multiple choices, insert questions and answers
