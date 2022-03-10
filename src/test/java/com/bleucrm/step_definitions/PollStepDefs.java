@@ -52,12 +52,14 @@ public class PollStepDefs {
 
         for (int i = 0; i < dep_num; i++) {
             int RandomIndex = new Random().nextInt(dep_list.size());
+            new Actions(Driver.get()).moveToElement( dep_list.get(RandomIndex));
             dep_list.get(RandomIndex).click();
-            BrowserUtils.waitForClickablility(pollPage.department_check.get(RandomIndex), 15);
+            BrowserUtils.waitFor(1.0);
             pollPage.department_check.get(RandomIndex).click();
         }
         for (int i = 0; i < employee_num; i++) {
             int RandomIndex = new Random().nextInt(pollPage.employees.size());
+            new Actions(Driver.get()).moveToElement(pollPage.employees.get(RandomIndex));
             pollPage.employees.get(RandomIndex).click();
         }
 
@@ -92,6 +94,8 @@ public class PollStepDefs {
         for (int i = 0; i < employee_num; i++) {
             int RandomIndex = new Random().nextInt(pollPage.employees.size());
             pollPage.employees.get(RandomIndex).click();
+            pollPage.addMentionIcon.click();
+            pollPage.EmployeesDepartmentsTabMention.click();
         }
     }
 
