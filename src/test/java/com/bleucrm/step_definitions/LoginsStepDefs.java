@@ -25,5 +25,4 @@ public class LoginsStepDefs {
         Assert.assertEquals(urlLogin, Driver.get().getCurrentUrl());
     }
 
-
 }

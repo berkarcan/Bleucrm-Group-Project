@@ -67,4 +67,3 @@ Feature:  Create a poll by clicking on Poll tab under Active Stream
 
 
 
-
