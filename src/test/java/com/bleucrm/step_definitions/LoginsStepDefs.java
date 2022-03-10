@@ -23,4 +23,5 @@ public class LoginsStepDefs {
     public void the_User_Should_Be_Able_To_Reach_The_Dashboard_Page(String urlLogin) {
         Assert.assertEquals(urlLogin, Driver.get().getCurrentUrl());
     }
+
 }
