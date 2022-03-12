@@ -1,7 +1,7 @@
 package com.bleucrm.pages;
 
-import org.junit.Assert;
-import org.openqa.selenium.NoSuchElementException;
+import com.bleucrm.utilities.Driver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -17,13 +17,13 @@ public class QuickNavigateMenuPage extends BasePage{
     @FindBy(id = "lhe_button_editor_task-form-lifefeed_task_form")
     public WebElement visualEditorBtn;
 
-    @FindBy(id = "bx-html-editor-tlbr-lifefeed_task_form")
-    public WebElement textEditorBar;
+    @FindBy(xpath = "(//div[@class='feed-add-post-text'])[3]")
+    public WebElement textEditorBarOnTop;//bx-html-editor-tlbr-lifefeed_task_form
 
     @FindBy(xpath = "(//*[@id='post-buttons-bottom']/span[5])[2]")
     public WebElement checkListBtn;
 
-    @FindBy(xpath = "(//input[@class='js-id-checklist-is-form-title task-checklist-field-add']")
+    @FindBy(xpath = "//*[@id='bx-component-scope-lifefeed_task_form-checklist']/div[3]/span/span/input")
     public WebElement CheckListInputText;
 
     @FindBy(xpath = "//div[@class='task-checklist-actions']/span[1]")
@@ -32,7 +32,7 @@ public class QuickNavigateMenuPage extends BasePage{
     @FindBy(xpath = "//span[starts-with(@class, 'js-id-checklist-is-form-submit')]")
     public WebElement CheckListCheckMark;
 
-    @FindBy(xpath = "(//div[starts-with(@class, 'js-id-checklist-is-i-drag-handle')])[2]")
+    @FindBy(xpath = "(//div[starts-with(@class, 'js-id-checklist-is-i-drag-handle')])[4]")
     public WebElement separatorLine;
 
     @FindBy(xpath = "//div[@class='task-checklist-actions']/span[2]")
@@ -47,8 +47,18 @@ public class QuickNavigateMenuPage extends BasePage{
     @FindBy(css = ".task-checklist-title")
     public WebElement checkListText;
 
+    @FindBy(css = "(//input[starts-with(@id, 'chl_item_')])[1]")
+    public WebElement verifyAddCheckList;
 
+    public WebElement setVerifyAddCheckList(WebElement verifyAddCheckList) {
+        for (int i = 1; i <= 3; i++) {
+
+            String rowChechBoxLocator = "(//input[starts-with(@id, 'chl_item_')])["+i+"]";
+            verifyAddCheckList = Driver.get().findElement(By.xpath(rowChechBoxLocator));
+        }
+        return verifyAddCheckList;
     }
+}
 
 
 

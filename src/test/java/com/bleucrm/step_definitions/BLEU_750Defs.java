@@ -5,6 +5,7 @@ import com.bleucrm.utilities.BrowserUtils;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.Keys;
 
 public class BLEU_750Defs {
 
@@ -26,8 +27,10 @@ public class BLEU_750Defs {
 
     @When("user click the high priority checkbox")
     public void user_click_the_high_priority_checkbox() {
+
+        BrowserUtils.waitForClickablility(quickNavigateMenuPage.highPriorityCheckBox,10);
        quickNavigateMenuPage.highPriorityCheckBox.click();
-       BrowserUtils.waitForClickablility(quickNavigateMenuPage.highPriorityCheckBox,10);
+
 
     }
 
@@ -40,53 +43,57 @@ public class BLEU_750Defs {
     //Test Case 2
     @When("user clicks visual editor")
     public void user_clicks_visual_editor() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        BrowserUtils.waitFor(2);
+     quickNavigateMenuPage.visualEditorBtn.click();
     }
 
-    @Then("verify that the editor text bar is displayed above the message box")
-    public void verify_that_the_editor_text_bar_is_displayed_above_the_message_box() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    @Then("verify that the visual editor messagebox is displayed")
+    public void verify_that_the_visual_editor_messagebox_is_displayed() {
+
+        Assert.assertTrue(quickNavigateMenuPage.textEditorBarOnTop.isDisplayed());
+
+       // Assert.assertTrue("text bar is not displayed",quickNavigateMenuPage.textEditorBarOnTop.isDisplayed());
     }
 
     //Test Case 3
     @When("user clicks checklist")
     public void user_clicks_checklist() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        BrowserUtils.waitFor(2);
+        quickNavigateMenuPage.checkListBtn.click();
     }
 
     @Then("verify that the checklist text is displayed on the top")
     public void verify_that_the_checklist_text_is_displayed_on_the_top() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        String textCheckList = quickNavigateMenuPage.checkListText.getText();
+        System.out.println("textCheckList = " + textCheckList);
+        Assert.assertEquals("Checklist",textCheckList);
     }
 
     @When("user enter some words or sentences in the input box")
     public void user_enter_some_words_or_sentences_in_the_input_box() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        quickNavigateMenuPage.CheckListInputText.sendKeys("ali" + Keys.ENTER);
+        quickNavigateMenuPage.CheckListInputText.sendKeys("veli"+ Keys.ENTER);
+        quickNavigateMenuPage.CheckListInputText.sendKeys("deli :D"+ Keys.ENTER);
     }
 
     @Then("user click the add button or checkmark")
     public void user_click_the_add_button_or_checkmark() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+     BrowserUtils.selectCheckBox(quickNavigateMenuPage.setVerifyAddCheckList(quickNavigateMenuPage.verifyAddCheckList),false);
+
     }
 
     //Test Case 4
 
     @When("user clicks separator")
     public void user_clicks_separator() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+       quickNavigateMenuPage.CheckListSeparatorBtn.click();
+
     }
 
     @Then("user can see the separator lines between checklist items.")
     public void user_can_see_the_separator_lines_between_checklist_items() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
+        Assert.assertTrue("sdaffwef",quickNavigateMenuPage.separatorLine.isEnabled());
     }
 
 
