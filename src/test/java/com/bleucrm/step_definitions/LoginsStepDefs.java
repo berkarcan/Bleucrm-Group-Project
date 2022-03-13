@@ -11,6 +11,7 @@ import org.junit.Assert;
 import static com.bleucrm.utilities.BrowserUtils.waitForVisibility;
 
 public class LoginsStepDefs {
+
     LoginPage loginPage=new LoginPage();
     DashBoardPage dashBoardPage=new DashBoardPage();
 
