@@ -1,12 +1,12 @@
 Feature:  As a user, I should be able to use Filter and search functionality on Active Stream
 
-  @wip
+
   Background:
     Given the user logins with a valid username and password
     When the user should be able to reach the dashboard page: "https://qa.bleucrm.com/stream/?login=yes"
     And the user clicks on the filterAndSearch button
 
-  @wip
+
   Scenario : User should be able to see default filters
     Then the user should see defaults filters on the search page
       | WORK          |
