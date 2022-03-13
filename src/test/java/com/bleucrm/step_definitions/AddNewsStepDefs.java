@@ -19,7 +19,7 @@ public class AddNewsStepDefs {
 
     @Given("the user is on the company page")
     public void the_user_is_on_the_company_page() {
-        LoginPage.login(ConfigurationReader.get("username"), ConfigurationReader.get("password"));
+
 
          DashBoardPage.company_tab.click();
 
