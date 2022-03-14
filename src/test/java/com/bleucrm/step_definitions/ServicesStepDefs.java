@@ -67,7 +67,7 @@ public class ServicesStepDefs {
     public void user_likes_idea(String string) {
         //servicesPage.visible.click();
         servicesPage.like.click();
-        BrowserUtils.waitFor(1);
+        BrowserUtils.waitFor(5);
 
     }
     @Then("User dislikes {string} idea")

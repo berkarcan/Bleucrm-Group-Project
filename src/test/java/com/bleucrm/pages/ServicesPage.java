@@ -29,7 +29,7 @@ public class ServicesPage {
 
     @FindBy (id = "bx-ilike-button-BLOG_POST_423-1646842378")
     public WebElement visible;
-    @FindBy (xpath= "//*[@data-reaction='like']")
+    @FindBy (xpath= "//span[starts-with(@id,'bx-ilike-button-BLOG_POST_434')]//a[.='Like']")
     public WebElement like;
     @FindBy (xpath = "//*[@id=\"workarea-content\"]/div/div/div[1]/table/tbody/tr[2]/td[2]/table/tbody/tr/td[3]/a/span[3]")
     public WebElement newCategory;
