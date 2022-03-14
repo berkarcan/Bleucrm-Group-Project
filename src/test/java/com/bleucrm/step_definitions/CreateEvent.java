@@ -128,4 +128,15 @@ public class CreateEvent {
 
 
     }
+
+    @Then("the user should not be able to create event")
+    public void the_user_should_not_be_able_to_create_event() {
+
+        eventsPage.sendButton.click();
+
+        Assert.assertNotEquals("https://qa.bleucrm.com/stream/",Driver.get().getCurrentUrl());
+
+    }
+
+
 }
