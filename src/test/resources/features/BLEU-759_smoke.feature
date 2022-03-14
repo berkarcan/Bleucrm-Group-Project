@@ -1,4 +1,5 @@
-Feature: Default
+@smoke
+Feature: Smoke test set
 
 	Background:
 		#@BLEU-754
