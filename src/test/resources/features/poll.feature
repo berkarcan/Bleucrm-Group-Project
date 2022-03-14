@@ -51,7 +51,7 @@ Feature:  Create a poll by clicking on Poll tab under Active Stream
       | 1 |
    ##1 denotes first question, 3 denotes third
 
-  @smoke
+
   Scenario: User sends a poll  with multiple choices using the general functionalities in the preceding scenarios
     When user clicks "Add more" and clicks Employees and Departments
     Then user can click to add 2 departments and 4 employees randomly
