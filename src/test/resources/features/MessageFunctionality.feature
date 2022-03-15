@@ -24,6 +24,7 @@ Feature: BlEUCRM Sending Message Functionalities
     And User is able to click  on the "Add mention" icon
     And User enters a mention
     Then User should see the mention on the writting pad
+    
   @wip
   Scenario: User should be able to send a message
     And user enters a message

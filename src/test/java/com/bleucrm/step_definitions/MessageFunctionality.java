@@ -112,7 +112,8 @@ Assert.assertTrue(messageFunct.messageBox.getText().contains("hr2@cybertekschool
 
     @When("User clicks on the send button")
     public void user_clicks_on_the_send_button() {
-        Driver.get().switchTo().frame(Driver.get().findElement(By.className("bx-editor-iframe")));
+      // Driver.get().switchTo().frame(Driver.get().findElement(By.className("bx-editor-iframe")));
+        // Driver.get().switchTo().frame("feed-add-buttons-blockblogPostForm");
 
 
         messageFunct.sendBtn.click();
