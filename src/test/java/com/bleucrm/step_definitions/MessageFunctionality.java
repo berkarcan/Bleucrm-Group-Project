@@ -105,6 +105,7 @@ public class MessageFunctionality {
 
 
         messageFunct.messageBox.sendKeys("Peace for Ukraina!!!");
+        Driver.get().switchTo().parentFrame();
 
 
     }
