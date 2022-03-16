@@ -94,7 +94,7 @@ public class MessageFunctionality {
     @Then("User should see the mention on the writting pad")
     public void user_should_see_the_mention_on_the_writting_pad() {
         Driver.get().switchTo().frame(Driver.get().findElement(By.className("bx-editor-iframe")));
-        
+
         Assert.assertTrue(messageFunct.messageBox.getText().contains("hr2@cybertekschool.com"));
 
     }
