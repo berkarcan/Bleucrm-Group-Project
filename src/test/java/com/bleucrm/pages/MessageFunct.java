@@ -42,7 +42,7 @@ public class MessageFunct extends BasePage{
     @FindBy(css="body[contenteditable='true']")
     public WebElement messageBox;
 
-    @FindBy(xpath= "//*[@id=\"blog-submit-button-save\"]")
+    @FindBy(xpath = "//*[@id='blog-submit-button-save']")
     public WebElement sendBtn;
 
     @FindBy(xpath="//*[@id=\"blg-post-img-433\"]")
