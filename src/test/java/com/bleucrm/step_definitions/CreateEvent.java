@@ -123,7 +123,7 @@ public class CreateEvent {
 
         eventsPage.sendButton.click();
 
-        Assert.assertEquals("https://qa.bleucrm.com/stream/",Driver.get().getCurrentUrl());
+        Assert.assertEquals("https://qa.bleucrm.com/stream/?login=yes",Driver.get().getCurrentUrl());
 
 
 
@@ -134,7 +134,7 @@ public class CreateEvent {
 
         eventsPage.sendButton.click();
 
-        Assert.assertNotEquals("https://qa.bleucrm.com/stream/",Driver.get().getCurrentUrl());
+        Assert.assertNotEquals("https://qa.bleucrm.com/stream/?login=yes",Driver.get().getCurrentUrl());
 
     }
 
