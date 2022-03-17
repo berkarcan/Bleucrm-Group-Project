@@ -1,7 +1,7 @@
 Feature: Events Feature
 
 	
-	@BLEU-779 @BLEU-781
+	@BLEU-779 @BLEU-781 @smoke @BLEU-759
 	Scenario Outline: User adds start and end time while specifying timezone
 		Given the user is on the events page
 		    When the user enters <"event name"> and <"message">
